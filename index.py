@@ -318,8 +318,8 @@ def graph1(month, toggle):
 
     fig2 = go.Figure(go.Pie(labels=df_1['Consultor']+' - '+ df_1['Equipe'], values=df_1['Valor Pago'], hole=.6))
     fig1 = go.Figure(go.Bar(x=df_1['Consultor'], y=df_1['Valor Pago'], textposition='auto', text=df_1['Valor Pago']))
-    fig1.update_layout(main_config, height=200, template= template, xaxis=dict(fixedrange=True), yaxis=dict(fixedrange=True))        
-    fig2.update_layout(main_config, height=200, template= template, showlegend=False)
+    fig1.update_layout(main_config, height=200, template= template, xaxis=dict(fixedrange=True), yaxis=dict(fixedrange=True))    
+    fig2.update_layout(main_config, height=200, template= template, showlegend=False, xaxis=dict(fixedrange=True), yaxis=dict(fixedrange=True))
     
     select = html.H1(convert_to_text(month))
 
@@ -354,7 +354,7 @@ def graph3(team, toggle):
             ),
         align="center", bgcolor="rgba(0,0,0,0.8)",
         x=0.05, y=0.55, showarrow=False)
-    fig3.update_layout(main_config, height=180, template=template)
+    fig3.update_layout(main_config, height=180, template=template, xaxis=dict(fixedrange=True), yaxis=dict(fixedrange=True))
     return fig3
 
 # Grafico 4
@@ -388,7 +388,7 @@ def graph4(team, toggle):
         align="center", bgcolor="rgba(0,0,0,0.8)",
         x=0.05, y=0.55, showarrow=False)
     
-    fig4.update_layout(main_config, height=180, template=template)
+    fig4.update_layout(main_config, height=180, template=template, xaxis=dict(fixedrange=True), yaxis=dict(fixedrange=True))
     return fig4
 
 # Indicadores 1 e 2 -- graficos 5 e 6
@@ -428,8 +428,8 @@ def graph5(month, toggle):
         delta = {'relative': True, 'valueformat': '.1%', 'reference': df_5['Valor Pago'].mean()}
     ))
 
-    fig5.update_layout(main_config, height=200, template=template)
-    fig6.update_layout(main_config, height=200, template=template)
+    fig5.update_layout(main_config, height=200, template=template, xaxis=dict(fixedrange=True), yaxis=dict(fixedrange=True))
+    fig6.update_layout(main_config, height=200, template=template, xaxis=dict(fixedrange=True), yaxis=dict(fixedrange=True))
     fig5.update_layout({"margin": {"l":0,"r":0,"t":50,"b":0}})
     fig6.update_layout({"margin": {"l":0,"r":0,"t":50,"b":0}})
 
@@ -450,6 +450,10 @@ def graph7(toggle):
     fig7.add_trace(go.Scatter(y=df_7_group["Valor Pago"], x=df_7_group["Mês"], mode='lines+markers', fill='tonexty', name='Total de Vendas'))
 
     fig7.update_layout(main_config, yaxis={'title':None}, xaxis={'title': None}, height=190, template=template)
+
+    fig7.update_xaxes(fixedrange=True)
+    fig7.update_yaxes(fixedrange=True)
+
     fig7.update_layout({"legend": {"yanchor": "top", "y":0.99, "font" : {"color":"white", 'size': 10}}})
     return fig7
 
@@ -475,7 +479,7 @@ def graph8(month, toggle):
         text=df_8['Valor Pago'],
         insidetextfont=dict(family='Times', size=12)))
     
-    fig8.update_layout(main_config, height=360, template=template)
+    fig8.update_layout(main_config, height=360, template=template, xaxis=dict(fixedrange=True), yaxis=dict(fixedrange=True))
     return fig8
 
 
@@ -500,7 +504,7 @@ def graph9(month, team, toggle):
     fig9 = go.Figure()
     fig9.add_trace(go.Pie(labels=df_9['Meio de Propaganda'], values=df_9['Valor Pago'], hole=.7))
 
-    fig9.update_layout(main_config, height=150, template=template, showlegend=False)
+    fig9.update_layout(main_config, height=150, template=template, showlegend=False, xaxis=dict(fixedrange=True), yaxis=dict(fixedrange=True))
     return fig9
 
 
@@ -519,7 +523,7 @@ def graph10(team, toggle):
     df10 = df_10.groupby(['Meio de Propaganda', 'Mês'])['Valor Pago'].sum().reset_index()
     fig10= px.line(df10, y="Valor Pago", x="Mês", color="Meio de Propaganda")
 
-    fig10.update_layout(main_config, height=200, template=template, showlegend=False)
+    fig10.update_layout(main_config, height=200, template=template, showlegend=False, xaxis=dict(fixedrange=True), yaxis=dict(fixedrange=True))
     return fig10
 
 
@@ -547,7 +551,7 @@ def graph11(month,team, toggle):
         number = {'prefix': "R$"}
         ))
 
-    fig11.update_layout(main_config, height=300, template=template)
+    fig11.update_layout(main_config, height=300, template=template, xaxis=dict(fixedrange=True), yaxis=dict(fixedrange=True))
     select = html.H1("Todas Equipes") if team == 0 else html.H1(team)
 
     return fig11, select
