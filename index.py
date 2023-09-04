@@ -90,39 +90,39 @@ def team_filter(team):
         mask = df['Equipe'].isin([team])
     return mask
 
-# def convert_to_text(month):
-#     lista1= ['Ano todo','Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Stembro','Outubro','Novembro','Dezembro']
-#     return lista1[month]
-
 def convert_to_text(month):
-    match month:
-        case 0:
-            x = 'Ano Todo'
-        case 1:
-            x = 'Janeiro'
-        case 2:
-            x = 'Fevereiro'
-        case 3:
-            x = 'Março'
-        case 4:
-            x = 'Abril'
-        case 5:
-            x = 'Maio'
-        case 6:
-            x = 'Junho'
-        case 7:
-            x = 'Julho'
-        case 8:
-            x = 'Agosto'
-        case 9:
-            x = 'Setembro'
-        case 10:
-            x = 'Outubro'
-        case 11:
-            x = 'Novembro'
-        case 12:
-            x = 'Dezembro'
-    return x
+    lista1= ['Ano todo','Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Stembro','Outubro','Novembro','Dezembro']
+    return lista1[month]
+
+# def convert_to_text(month):
+#     match month:
+#         case 0:
+#             x = 'Ano Todo'
+#         case 1:
+#             x = 'Janeiro'
+#         case 2:
+#             x = 'Fevereiro'
+#         case 3:
+#             x = 'Março'
+#         case 4:
+#             x = 'Abril'
+#         case 5:
+#             x = 'Maio'
+#         case 6:
+#             x = 'Junho'
+#         case 7:
+#             x = 'Julho'
+#         case 8:
+#             x = 'Agosto'
+#         case 9:
+#             x = 'Setembro'
+#         case 10:
+#             x = 'Outubro'
+#         case 11:
+#             x = 'Novembro'
+#         case 12:
+#             x = 'Dezembro'
+#     return x
 
 # =========  Layout  =========== #
 app.layout = dbc.Container(children=[
@@ -410,7 +410,7 @@ def graph5(month, toggle):
     df_5 = df_5.reset_index()
     fig5 = go.Figure()
     fig5.add_trace(go.Indicator(mode='number+delta',
-        title = {"text": f"<span  style='font-size:95%'>{df_5['Consultor'].iloc[0]}- Top Cobsultor(a)</span>"},
+        title = {"text": f"<span  style='font-size:80%'>{df_5['Consultor'].iloc[0]}- Top Consultor(a)</span>"},
         #title = {"text": f"<span  style='font-size:95%'>{df_5['Consultor'].iloc[0]}- Top Cobsultor</span><span style='font-size:60%'>Em Vendas - em relação a média</span>"},
         value = df_5['Valor Pago'].iloc[0],
         number = {'prefix':"R$"},
