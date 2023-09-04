@@ -320,7 +320,9 @@ def graph1(month, toggle):
     fig1 = go.Figure(go.Bar(x=df_1['Consultor'], y=df_1['Valor Pago'], textposition='auto', text=df_1['Valor Pago']))
     fig1.update_layout(main_config, height=200, template= template)
     fig2.update_layout(main_config, height=200, template= template, showlegend=False)
-
+    fig2.update_traces(editable=False)
+    fig1.update_traces(editable=False)
+    
     select = html.H1(convert_to_text(month))
 
     return fig1, fig2, select
@@ -354,7 +356,7 @@ def graph3(team, toggle):
             ),
         align="center", bgcolor="rgba(0,0,0,0.8)",
         x=0.05, y=0.55, showarrow=False)
-    
+    fig3.update_traces(editable=False)
     fig3.update_layout(main_config, height=180, template=template)
     return fig3
 
