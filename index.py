@@ -318,7 +318,9 @@ def graph1(month, toggle):
 
     fig2 = go.Figure(go.Pie(labels=df_1['Consultor']+' - '+ df_1['Equipe'], values=df_1['Valor Pago'], hole=.6))
     fig1 = go.Figure(go.Bar(x=df_1['Consultor'], y=df_1['Valor Pago'], textposition='auto', text=df_1['Valor Pago']))
-    fig1.update_layout(main_config, height=200, template= template)
+    fig1.update_layout(main_config, height=200, template= template)    
+    fig1.update_xaxes(zoom=False)
+    fig1.update_yaxes(zoom=False)
     fig2.update_layout(main_config, height=200, template= template, showlegend=False)
 
     select = html.H1(convert_to_text(month))
